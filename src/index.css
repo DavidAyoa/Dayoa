@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: rgba(236, 231, 225, 1);
+  --dark-light: rgb(0, 0, 0, 1);
+  /* font-family: 'Satoshi-Regular', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --display-large: 176px;
+  --display-regular: 128px;
+  --display-medium: 90px;
+  --heading-large: 78px;
+  --heading-regular: 64px;
+  --heading-medium: 48px;
+  --sub-heading-large: 42px;
+  --sub-heading-regular: 36px;
+  --body-large: 24px;
+  --body-regular: 20px;
+  --body-medium: 18px;
+  --body-small: 16px;
+  --caption-large: 12px;
+  --caption-regular: 10px; */
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html::-webkit-scrollbar {
+  width: 5px;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--dark-light);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* scrollbar-width: thin;
+  scrollbar-color: var(--dark-light) var(--primary); */
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* #dayoa {
+  min-height: 100vh;
+} */

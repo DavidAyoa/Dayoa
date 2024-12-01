@@ -1,0 +1,7 @@
+/* .nav-logo {
+    height: 24px;
+} */
+
+.nav-icons-container svg defs {
+    width: 100px;
+}
