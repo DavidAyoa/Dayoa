@@ -17,14 +17,14 @@ function Marquee({ text }: MarqueeText) {
     }
     
     return (
-        <motion.div className="marquee flex justify-start items-center">
+        <motion.div className="marquee flex justify-start items-center mt-5">
             <div className="track flex justify-center items-center font-bold">
                 {[...Array(3)].map((_, i) => (
                     <motion.div
                         key={i}
                         variants={contentTranslate}
                         animate="end"
-                        className="content font-satoshi-bold text-heading-large lg:text-display-large text-nowrap text-primary-light"
+                        className="content font-satoshi-bold p-0 text-heading-large lg:text-display-large text-nowrap text-primary-light leading-tight"
                     >
                         {text}
                     </motion.div>

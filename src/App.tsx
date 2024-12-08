@@ -1,11 +1,11 @@
 import './App.css'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { LenisRef, ReactLenis } from 'lenis/react'
 import { cancelFrame, frame } from "motion/react"
-// import Preloader from './components/Preloader'
-// import MotionText from './components/MotionText'
+import Preloader from './components/Preloader'
 import Navigation from './components/Navigation'
 import Intro from './components/Intro'
+import FrontendHero from './components/FrontendHero'
 import Footer from './components/Footer'
 
 interface FrameData {
@@ -16,6 +16,7 @@ interface FrameData {
 
 function App() {
   const lenisRef = useRef<LenisRef | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     function update(data: FrameData) {
@@ -28,20 +29,27 @@ function App() {
     return () => cancelFrame(update)
   }, [])
 
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <div id='dayoa' className='bg-primary-light font-satoshi h-dvh flex justify-center items-center'>
-      <ReactLenis options={{ autoRaf: false }} ref={lenisRef}>
-        {/* <Preloader /> */}
-        {/* <MotionText
-          className='text-sub-heading-large flex justify-center items-center flex-wrap gap-2 w-[550px] leading-9 text-primary-light mix-blend-difference'
-        >
-          Early Adopter Token Rewards: Tiered reward system based on order priority for the first 69,000 eligible controller purchase
-        </MotionText> */}
-        <Navigation />
-        <Intro />
-        <Footer />
+    <>
+      <Preloader onLoadingComplete={handleLoadingComplete} />
+      <ReactLenis 
+        options={{ autoRaf: false }} 
+        ref={lenisRef} 
+        className={`font-satoshi flex justify-center items-center h-[300vh] transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'} ${isLoading ? 'mt-[100vh]' : 'mt-0' }`} 
+        root
+      >
+        <div className='bg-primary-light'>
+          {!isLoading && <Navigation />}
+          <Intro />
+          <FrontendHero />
+          {!isLoading && <Footer />}
+        </div>
       </ReactLenis>
-    </div>
+    </>
   )
 }
 
