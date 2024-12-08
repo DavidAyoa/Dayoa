@@ -1,4 +1,3 @@
-import "../styles/preloader.css";
 import { useEffect, useState, forwardRef, SVGProps, useRef } from "react";
 import { motion } from "motion/react";
 // import LoaderLogo from '../asssets/logo/logo-lowercase.svg?react'
