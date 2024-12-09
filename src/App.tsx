@@ -20,26 +20,31 @@ function App() {
 
   useEffect(() => {
     function update(data: FrameData) {
-      const time = data.timestamp
-      lenisRef.current?.lenis?.raf(time)
+      if (lenisRef.current?.lenis) {
+        lenisRef.current.lenis.raf(data.timestamp)
+      }
     }
 
     frame.update(update, true)
-
-    return () => cancelFrame(update)
+    return () => {
+      cancelFrame(update)
+    }
   }, [])
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
 
   return (
     <>
-      <Preloader onLoadingComplete={handleLoadingComplete} />
+      <Preloader onLoadingComplete={() => setIsLoading(false)} />
       <ReactLenis 
-        options={{ autoRaf: false }} 
+        options={{ 
+          autoRaf: false,
+          smoothWheel: true,
+          wheelMultiplier: 1,
+          touchMultiplier: 2,
+        }} 
         ref={lenisRef} 
-        className={`font-satoshi flex justify-center items-center h-[300vh] transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'} ${isLoading ? 'mt-[100vh]' : 'mt-0' }`} 
+        className={`font-satoshi flex justify-center items-center h-[300vh] transition-opacity duration-500 ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        } ${isLoading ? 'mt-[100vh]' : 'mt-0'}`} 
         root
       >
         <div className='bg-primary-light'>
