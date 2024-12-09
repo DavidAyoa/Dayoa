@@ -119,11 +119,11 @@ function Preloader({ onLoadingComplete }: PreloaderProps) {
   useEffect(() => {
     const incrementProgress = () => {
       setProgress((prevProgress) => {
-        if (!isLoading && prevProgress >= 99.9) {
+        if (!isLoading && prevProgress >= 100) {
           return 100;
         }
-        const increment = prevProgress < 99.9 ? 1 : 0.1;
-        return Math.min(99.9, prevProgress + increment);
+        const increment = prevProgress < 100 ? 1 : 0.1;
+        return Math.min(100, prevProgress + increment);
       });
     };
 
