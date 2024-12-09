@@ -2,7 +2,7 @@ import MotionText from "./MotionText";
 
 function FrontendHero() {
   return (
-    <section className="frontend h-dvh flex justify-center items-center text-primary-light mix-blend-difference w-full text-body-large">
+    <section className="font-satoshi-regular frontend h-[125vh] flex justify-center items-center text-primary-light mix-blend-difference w-full text-body-small md:text-body-large">
         <MotionText
             scrollTrigger={true}
             className="w-[50%] text-center"
